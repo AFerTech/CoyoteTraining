@@ -1,0 +1,22 @@
+{
+    "name": "alexis/app-salon_php_mvc_js_sass",
+    "description": "Proyecto con php 8, MVC, SASS, GULP, MYSQL",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Alexis\\AppSalonPhpMvcJsSass\\": "src/",
+            "MVC\\" : "./",
+            "Controllers\\" : "./controllers",
+            "Model\\" : "./models"
+            
+
+        }
+    },
+    "authors": [
+        {
+            "name": "Alexis Fernando",
+            "email": "alexis96fer@gmail.com"
+        }
+    ],
+    "require": {}
+}
