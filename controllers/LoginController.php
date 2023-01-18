@@ -14,8 +14,10 @@ class LoginController
     public static function logout(){
         echo "Desde logout";
     }
-    public static function recuperar(){
-        echo "Desde recuperar";
+    public static function recuperar(Router $router){
+        $router->render('auth/recuperar-password',[
+            
+        ]);
     }
     public static function recuperado(){
         echo "Desde recuperado";
@@ -23,7 +25,7 @@ class LoginController
 
     public static function crear(Router $router){
         $router->render('auth/crear-cuenta',[
-            
+
         ]);
     }
 
