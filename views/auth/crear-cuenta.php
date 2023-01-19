@@ -39,22 +39,22 @@
     </div>
 
     <div class="campo">
-        <label for="correo electronico">Correo Electronico</label>
+        <label for="email">Correo Electronico</label>
         <input 
         type="email"
-        id="correo electronico"
-        name="correo electronico"
+        id="email"
+        name="email"
         placeholder="Correo Electronico"
         value ="<?php  echo s($usuario->email); ?>"
         />
     </div>
 
     <div class="campo">
-        <label for="contraseña">Contraseña</label>
+        <label for="password">Contraseña</label>
         <input 
         type="password"
-        id="contraseña"
-        name="contraseña"
+        id="password"
+        name="password"
         placeholder="Contraseña"
         />
     </div>
