@@ -43,6 +43,8 @@ class LoginController
                 }else{
                     // has password
                     $usuario->hashPassword();
+                    // generar token
+                    $usuario->crearToken();
                     
                     debuguear($usuario);
                 }
