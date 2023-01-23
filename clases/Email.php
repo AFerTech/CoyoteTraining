@@ -42,10 +42,9 @@ class Email{
             Gracias por crear tu cuenta en CoyoteTraining, da click 
             en el siguiente enlace para terminar de crear tu cuenta
             </p>";
-            $contenido.= "<p>Da click en el siguiente enlace: <a href='http://localhost:3000/confirmar?token=
-            ".$this->token."'Confirmar Cuenta</a></p>"; 
-            $contenido .= "<p>Si usted no ha creado una cuenta, puede ignorar este mensaje</p>";
-            $contenido .= "</html>";
+            $contenido.= "<p>Da click en el siguiente enlace: <a href='http://localhost:3000/confirmar-cuenta?token=".$this->token."'</a>Confirmar Cuenta</p>"; 
+            $contenido.= "<p>Si usted no ha creado una cuenta, puede ignorar este mensaje</p>";
+            $contenido.= "</html>";
             $mail->Body = $contenido;
 
             $mail->send();
