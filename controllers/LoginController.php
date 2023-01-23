@@ -76,8 +76,17 @@ class LoginController
         $token = s($_GET['token']);
 
        $usuario= Usuario::where('token', $token);
-       debuguear($usuario);
-        $router->render('auth/confirmar-cuenta',[
+
+        if(empty($usuario)){
+            Usuario::setAlerta('error', 'Token no valido');
+        }else{
+            $usuario->confirmado = 1;
+            $usuario->token = null;
+            $usuario->guardar();
+            Usuario::setAlerta('exito', 'Cuenta confirmada correctamente');
+        }
+        $alertas = Usuario::getAlertas();
+       $router->render('auth/confirmar-cuenta',[
             'alertas' => $alertas
         ]);
     }
