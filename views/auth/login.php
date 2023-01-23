@@ -1,6 +1,8 @@
 <h1 class="pag-name">Login</h1>
 <p class="desc-pag">Iniciar Sesión</p>
 
+<?php include_once __DIR__ . "/../templates/alertas.php"; ?>
+
 <form action="/" method="POST" class="form">
     <div class="campo">
         <label for="email">Correo Electronico</label>
@@ -9,6 +11,7 @@
             id="email"
             placeholder="Correo Electronico"
             name="email"
+            value="<?php echo s($auth->email);?>"
         />
     </div>  <!--Correo--> 
 
