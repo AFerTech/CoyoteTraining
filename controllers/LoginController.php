@@ -11,18 +11,34 @@ class LoginController
 {
     public static function login(Router $router){
         $alertas = [];
-
         $auth = new Usuario;
         if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
             $auth = new Usuario($_POST);
+
             $alertas=$auth->validarLogin();
-            // debuguear($auth);
+            
+            if(empty($alertas)){
+                // buscar al usuario en la bd por su email
+                $usuario = Usuario::where('email', $auth->email);
+                if($usuario){
+                    $usuario->verificacionPassword($auth->password);
+                }else{
+                    Usuario::setAlerta('error','Usuario no encontrado');
+                }
+            }
         }
+
+        $alertas = Usuario::getAlertas();
+
         $router->render('auth/login',[
             'alertas' => $alertas,
-            'auth' => $auth
+            'auth' => $auth  
         ]);
+
+        
+        
+        
     }
 
     public static function logout(){
