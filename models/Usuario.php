@@ -60,8 +60,6 @@ class Usuario extends ActiveRecord{
         }
         if(strlen($this->password) < 8){
             self::$alertas['error'][]= 'La contraseña debe contener minimo 8 caracteres';
-
-
         }
         return self::$alertas;
     }
@@ -77,6 +75,11 @@ class Usuario extends ActiveRecord{
             self::$alertas['error'][] = 'No se ha introducido un Correo Electronico';
         }
         return self::$alertas;
+    }
+    public function validarPassword(){
+        if( strlen($this->password) < 8){
+            self::$alertas['error'][] = 'La contraseña debe contener minimo 8 caracteres';
+        }
     }
 
     public function existeUsuario(){

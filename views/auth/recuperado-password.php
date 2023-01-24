@@ -3,6 +3,7 @@
 
 <?php include_once __DIR__ . "/../templates/alertas.php"; ?>
 
+<?php if($error) return null; ?>
 <form class="formulario"  method="POST">
 
     <div class="campo">
