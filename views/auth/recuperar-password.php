@@ -6,11 +6,11 @@
 <form class="formulario" action="/recuperar" method="POST">
 
     <div class="campo">
-        <label for="correo electronico">Correo Electronico</label>
+        <label for="email">Correo Electronico</label>
         <input 
         type="email"
-        id="correo electronico"
-        name="correo electronico"
+        id="email"
+        name="email"
         placeholder="Correo Electronico"
         />
     </div>
