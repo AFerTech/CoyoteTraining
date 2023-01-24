@@ -8,9 +8,10 @@ class CitaController{
 
 
     public static function index(Router $router){
-
+        session_start();
+        
         $router->render('usuario/index',[
-            
+            'nombre' => $_SESSION['nombre']
         ]);
     }
 }
