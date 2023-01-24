@@ -92,11 +92,17 @@ class Usuario extends ActiveRecord{
     public function crearToken(){
         $this->token = uniqid();
     }
+
+    
     public function verificacionPassword($password){
         
         $resultado = password_verify($password, $this->password);
-        
-        debuguear($resultado);
+
+        if(!$this->confirmado||!$resultado){
+            self::$alertas['error'][] = 'Password Incorrecto';
+        }else{
+            return true;
+        }
     }
 
 }

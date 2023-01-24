@@ -21,8 +21,28 @@ class LoginController
             if(empty($alertas)){
                 // buscar al usuario en la bd por su email
                 $usuario = Usuario::where('email', $auth->email);
+                
+                
                 if($usuario){
-                    $usuario->verificacionPassword($auth->password);
+                    if( $usuario->verificacionPassword($auth->password)){
+                        session_start();
+                        
+                        $_SESSION['id'] = $usuario->id;
+                        $_SESSION['nombre'] = $usuario->nombre . " " . $usuario->apellido;
+                        $_SESSION['email'] = $usuario->email;
+                        $_SESSION['admin'] = $usuario->admin;
+                        $_SESSION['login'] = true;
+
+                        // redireccionar
+                        if($usuario->admin==="1"){
+
+                            $_SESSION['admin'] = $usuario->admin ?? null;
+                            header('Location: /admin');
+
+                        }else{
+                            header('Location: /cita');
+                        }
+                    }
                 }else{
                     Usuario::setAlerta('error','Usuario no encontrado');
                 }
