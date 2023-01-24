@@ -72,6 +72,13 @@ class Usuario extends ActiveRecord{
         return self::$alertas;
     }
 
+    public function validarEmail(){
+        if(!$this->email){
+            self::$alertas['error'][] = 'No se ha introducido un Correo Electronico';
+        }
+        return self::$alertas;
+    }
+
     public function existeUsuario(){
         $query = " SELECT * FROM ". self::$tabla . " WHERE email ='" . $this->email . "' LIMIT 1";
         
@@ -93,7 +100,7 @@ class Usuario extends ActiveRecord{
         $this->token = uniqid();
     }
 
-    
+
     public function verificacionPassword($password){
         
         $resultado = password_verify($password, $this->password);

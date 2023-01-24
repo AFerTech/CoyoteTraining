@@ -65,8 +65,20 @@ class LoginController
         echo "Desde logout";
     }
     public static function recuperar(Router $router){
+        $alertas = [];
+
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $auth = new Usuario($_POST);
+            $alertas=$auth->validarEmail();
+
+            if(empty($alertas)){
+                
+            }
+
+        }
+
         $router->render('auth/recuperar-password',[
-            
+            'alertas' => $alertas
         ]);
     }
     public static function recuperado(){

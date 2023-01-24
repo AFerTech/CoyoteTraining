@@ -1,6 +1,8 @@
 <h1 class="pag-name">Recuperar Contraseña</h1>
 <p class="desc-pag">Ingresa el correo electronico registrado en la cuenta para poder restablecer tu contraseña</p>
 
+<?php include_once __DIR__ . "/../templates/alertas.php"; ?>
+
 <form class="formulario" action="/recuperar" method="POST">
 
     <div class="campo">
@@ -12,9 +14,11 @@
         placeholder="Correo Electronico"
         />
     </div>
+    
+    <input type="submit" value="Recuperar" class="btn">
+
 </form>
 
-<input type="submit" valiue="Recuperar" class="btn">
 
 <div class="acciones">
     <a href="/">Iniciar Sesión</a>
