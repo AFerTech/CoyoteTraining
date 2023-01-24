@@ -75,15 +75,20 @@ class LoginController
                 $usuario = Usuario::where('email', $auth->email);
 
                 if($usuario && $usuario->confirmado==="1"){
-                    
+                    // generar token
+                    $usuario->crearToken();
+                    $usuario->guardar();
+
+                    // TODO : enviar email
+                    Usuario::setAlerta('exito','Se ha enviado un mensaje al correo para recuperar la contraseña');
                 }else{
                     Usuario::setAlerta('error','El usuario no existe o no esta confirmado');
-                    $alertas = Usuario::getAlertas();
                 }
             }
 
 
         }
+        $alertas= Usuario::getAlertas();
 
         $router->render('auth/recuperar-password',[
             'alertas' => $alertas
