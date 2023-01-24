@@ -9,6 +9,8 @@ class CitaController{
 
     public static function index(Router $router){
 
-        $router->render('usuario/index');
+        $router->render('usuario/index',[
+            
+        ]);
     }
 }
