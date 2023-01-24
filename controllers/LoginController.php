@@ -79,7 +79,9 @@ class LoginController
                     $usuario->crearToken();
                     $usuario->guardar();
 
-                    // TODO : enviar email
+                    $email = new Email($usuario->nombre, $usuario->email, $usuario->token);
+                    $email->emailRecuperar      ();
+
                     Usuario::setAlerta('exito','Se ha enviado un mensaje al correo para recuperar la contraseña');
                 }else{
                     Usuario::setAlerta('error','El usuario no existe o no esta confirmado');

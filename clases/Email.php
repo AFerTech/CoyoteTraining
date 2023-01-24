@@ -42,7 +42,7 @@ class Email{
             Gracias por crear tu cuenta en CoyoteTraining, da click 
             en el siguiente enlace para terminar de crear tu cuenta
             </p>";
-            $contenido.= "<p>Da click en el siguiente enlace: <a href='http://localhost:3000/confirmar-cuenta?token=".$this->token."'</a>Confirmar Cuenta</p>"; 
+            $contenido.= "<p>Da click en el siguiente enlace: <a href='http://localhost:3000/confirmar-cuenta?token=".$this->token."'>Confirmar Cuenta</a></p>"; 
             $contenido.= "<p>Si usted no ha creado una cuenta, puede ignorar este mensaje</p>";
             $contenido.= "</html>";
             $mail->Body = $contenido;
@@ -50,6 +50,41 @@ class Email{
             $mail->send();
         } catch (Exception $e){
             echo "Correo no enviado. Error: {$mail->ErrorInfo}";
+        }
+    }
+    public function emailRecuperar(){
+        $mail = new PHPMailer();
+
+        try{
+
+            $mail->isSMTP();
+            $mail->Host = 'smtp.mailtrap.io';
+            $mail->SMTPAuth = true;
+            $mail->Port = 2525;
+            $mail->Username = 'b24060f102443e';
+            $mail->Password = 'bd2d8f40cab3fc';
+
+            $mail->setFrom('CoyoteTraining');
+            $mail->addAddress('Cuentas@coyotetraining.com', 'CoyoteTraining.com');
+            $mail->Subject = 'Recuperar cuenta';
+
+            $mail->isHTML(TRUE);
+            $mail->CharSet='UTF-8'; 
+
+            $contenido = "<html>";
+            $contenido .= "<p><strong>Hola ".$this->nombre ."</strong>
+            Para reestablecer tu contraseña y poder recuperar tu cuenta, da click 
+            en el siguiente enlace 
+            </p>";
+            $contenido.= "<p><a href='http://localhost:3000/recuperado?token=".$this->token."'>Recuperar Cuenta</a></p>"; 
+            $contenido.= "<p>Si usted no ha solicitado recuperar su cuenta, puede ignorar este mensaje</p>";
+            $contenido.= "</html>";
+            $mail->Body = $contenido;
+
+            $mail->send();
+
+        }catch (Exception $e){
+            echo "No se pudo enviar el correo. Error: {$mail->ErrorInfo}";
         }
     }
 }
