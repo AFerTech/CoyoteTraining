@@ -13,7 +13,7 @@
         <p class="text-center">Elige tus servicios</p>
     <div id="servicios" class="listado-servicio"></div>
     </div>
-    <div id="paso-2" class="seccion">
+    <div id="paso-2" class="seccion ">
          <h2>Datos</h2>
          <p class="text-center">Coloca tus datos y fecha de tu cita</p> 
          
