@@ -100,10 +100,37 @@ async function consultarApi(){
         const resultado = await fetch(url);
         const servicios = await resultado.json();
 
-        console.log(servicios);
+        mostrarServicios(servicios);
 
         mostrarServicio();
     } catch (error) {
         console.log(error);
     }
+}
+
+function mostrarServicios(servicios){
+
+    servicios.forEach(servicio =>{
+        const {id, nombre, precio} = servicio;
+
+        const nombreServicio = document.createElement('P');
+        nombreServicio.classList.add('servicio');
+        nombreServicio.textContent = nombre;
+
+        const precioServicio = document.createElement('P');
+        precioServicio.classList.add('precio');
+        precioServicio.textContent = `$${precio}`;
+
+        const servicioDiv = document.createElement('DIV');
+        servicioDiv.classList.add('servicio');
+        servicioDiv.dataset.idServicio = id;
+
+        servicioDiv.appendChild(nombreServicio);
+        servicioDiv.appendChild(precioServicio);
+
+        document.querySelector('#servicios').appendChild(servicioDiv);
+
+
+    });
+
 }
