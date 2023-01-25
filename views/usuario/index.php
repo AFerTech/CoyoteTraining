@@ -54,7 +54,7 @@
             &laquo; Regresar
         </button>
 
-        <button class="btn" id="anterior">
+        <button class="btn" id="siguiente">
             Siguiente  &raquo;
         </button>
     </div>
