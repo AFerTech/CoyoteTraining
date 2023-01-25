@@ -5,6 +5,7 @@ const pagFinal =3;
 
 document.addEventListener('DOMContentLoaded', function(){
     iniciarApp();
+    consultarApi(); //consulta la api de php
 });
 
 
@@ -80,6 +81,7 @@ function pagAnterior(){
         
     });
 }
+
 function pagSiguiente(){
     const siguiente = document.querySelector('#siguiente');
     siguiente.addEventListener('click', function(){
@@ -90,4 +92,18 @@ function pagSiguiente(){
         
     });
 
+}
+
+async function consultarApi(){
+    try {
+        const url = 'http://localhost:3000/api/servicios';
+        const resultado = await fetch(url);
+        const servicios = await resultado.json();
+
+        console.log(servicios);
+
+        mostrarServicio();
+    } catch (error) {
+        console.log(error);
+    }
 }
