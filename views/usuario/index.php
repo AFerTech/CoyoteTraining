@@ -3,8 +3,8 @@
 
 <div id="app">
     <nav class="tabs">
-        <button type="button" data-paso="1">Servicios</button>
-        <button class="actual" type="button" data-paso="2">Cita</button>
+        <button class="actual" type="button" data-paso="1">Servicios</button>
+        <button type="button" data-paso="2">Cita</button>
         <button type="button" data-paso="3">Resumen</button>
 
     </nav>
