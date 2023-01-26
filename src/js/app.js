@@ -22,6 +22,10 @@ function iniciarApp(){
     paginador(); //agrega o quitar botones del paginador
     pagAnterior(); // regresa a la pag anterior
     pagSiguiente();// avanza a la siguiente pag
+
+    consultarApi();
+
+    nombreCliente();
 }
 
 
@@ -162,5 +166,12 @@ function servicioSeleccionado(servicio){
     cita.servicios = [...servicios, servicio];
     servicioDiv.classList.add('seleccionado');
     }
+}
+
+function nombreCliente(){
+    const nombre = document.querySelector('#nombre').value;
+    cita.nombre=nombre;
+
+    console.log(cita);
 }
 
