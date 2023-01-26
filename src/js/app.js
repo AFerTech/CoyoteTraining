@@ -3,6 +3,13 @@ let paso =1;
 const pagInicio= 1;
 const pagFinal =3;
 
+const cita ={
+    nombre: '',
+    fecha: '',
+    hora: '',
+    servicios: []
+}
+
 document.addEventListener('DOMContentLoaded', function(){
     iniciarApp();
     consultarApi(); //consulta la api de php
@@ -102,7 +109,7 @@ async function consultarApi(){
 
         mostrarServicios(servicios);
 
-        mostrarServicio();
+        // mostrarServicios();
     } catch (error) {
         console.log(error);
     }
@@ -124,6 +131,9 @@ function mostrarServicios(servicios){
         const servicioDiv = document.createElement('DIV');
         servicioDiv.classList.add('servicios');
         servicioDiv.dataset.idServicio = id;
+        servicioDiv.onclick = function(){
+            servicioSeleccionado(servicio);
+        }
 
         servicioDiv.appendChild(nombreServicio);
         servicioDiv.appendChild(precioServicio);
@@ -134,3 +144,10 @@ function mostrarServicios(servicios){
     });
 
 }
+
+function servicioSeleccionado(servicio){
+    const {servicios} = cita;
+
+    cita.servicios = [...servicios, servicio];
+}
+
