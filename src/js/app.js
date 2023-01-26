@@ -146,8 +146,11 @@ function mostrarServicios(servicios){
 }
 
 function servicioSeleccionado(servicio){
+    const {id} = servicio;
     const {servicios} = cita;
-
     cita.servicios = [...servicios, servicio];
+
+    const servicioDiv = document.querySelector(`[data-id-servicio="${id}"]`);
+    servicioDiv.classList.add('seleccionado');
 }
 

@@ -15,6 +15,14 @@
         transition: transform;
         transition-duration: 300ms;
         text-align: center;
+        
+        &.seleccionado{
+            background-color: v.$space-cadet;
+            p{
+                color: v.$columbia-blue;
+            } 
+        }
+
         &:hover{
             transform: scale(1.1);
         }
