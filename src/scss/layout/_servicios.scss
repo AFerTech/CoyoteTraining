@@ -1,0 +1,36 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.listado-servicio{
+    display: grid;
+    gap: 2rem;
+
+    @include m.tablet{
+        @include m.grid(2, 2rem);
+    }
+    .servicios{
+        background-color: v.$purple-navy;
+        padding: 3rem;
+        border-radius: 1rem;
+        transition: transform;
+        transition-duration: 300ms;
+        text-align: center;
+        &:hover{
+            transform: scale(1.1);
+        }
+
+        p{
+            color: v.$azureish-white;
+            margin: 0 0 calc(v.$separacion/4) 0;
+        }
+        .precio{
+            color: v.$negro;
+            font-weight: v.$bold;
+            font-size: 3rem;
+            margin: 0;
+        }
+        
+    }
+    
+    
+}

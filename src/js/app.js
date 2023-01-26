@@ -122,7 +122,7 @@ function mostrarServicios(servicios){
         precioServicio.textContent = `$${precio}`;
 
         const servicioDiv = document.createElement('DIV');
-        servicioDiv.classList.add('servicio');
+        servicioDiv.classList.add('servicios');
         servicioDiv.dataset.idServicio = id;
 
         servicioDiv.appendChild(nombreServicio);
