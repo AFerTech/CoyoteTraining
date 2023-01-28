@@ -27,6 +27,7 @@ function iniciarApp(){
 
     nombreCliente(); //añade el nombre de cliente al obj de cita
     seleccionarFecha(); // añade la fecha al obj cita
+    seleccionarHora(); // añade la hora al obj cita
 }
 
 
@@ -184,14 +185,31 @@ function seleccionarFecha(){
         // validando que no seleccionen fin de semana
         if( [6 , 0].includes(dia)){
             e.target.value = '';
-            alertaFecha('Sábados y Domingos no disponibles', 'error');
+            mostrarAlerta('Sábados y Domingos no disponibles', 'error');
         }else{
             cita.fecha = e.target.value;
         }
     });
 }
 
-function alertaFecha(mensaje, tipo){
+function seleccionarHora(){
+    
+    const inputHora = document.querySelector('#hora');
+    inputHora.addEventListener('input', function(e){
+
+        const horaCita = e.target.value;
+        const hora = horaCita.split(":")[0];
+        if(hora < 10 || hora > 18){
+            e.target.value='';
+            mostrarAlerta('Hora no valida', 'error');
+        }else{
+            cita.hora = e.target.value;
+            console.log(cita);
+        }
+    });
+}
+
+function mostrarAlerta(mensaje, tipo){
 
     // previene que se generen más de 1 alerta
     const alertaPrevia = document.querySelector('.alert');
@@ -213,4 +231,6 @@ function alertaFecha(mensaje, tipo){
     }, 3000);
 
 }
+
+
 
