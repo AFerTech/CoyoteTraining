@@ -25,7 +25,8 @@ function iniciarApp(){
 
     consultarApi();
 
-    nombreCliente();
+    nombreCliente(); //añade el nombre de cliente al obj de cita
+    seleccionarFecha(); // añade la fecha al obj cita
 }
 
 
@@ -173,5 +174,19 @@ function nombreCliente(){
     cita.nombre=nombre;
 
     console.log(cita);
+}
+
+function seleccionarFecha(){
+    const inputFecha = document.querySelector('#fecha');
+    inputFecha.addEventListener('input', function(e){
+
+        const dia = new Date(e.target.value).getUTCDay();
+
+        if([6,0].includes(dia)){
+            e.target.value = '';
+        }else{
+            cita.fecha = e.target.value;
+        }
+    });
 }
 
