@@ -12,7 +12,7 @@ const cita ={
 
 document.addEventListener('DOMContentLoaded', function(){
     iniciarApp();
-    consultarApi(); //consulta la api de php
+   
 });
 
 
@@ -23,7 +23,7 @@ function iniciarApp(){
     pagAnterior(); // regresa a la pag anterior
     pagSiguiente();// avanza a la siguiente pag
 
-    consultarApi();
+    consultarApi(); //consulta la api de php
 
     nombreCliente(); //añade el nombre de cliente al obj de cita
     seleccionarFecha(); // añade la fecha al obj cita
@@ -173,20 +173,44 @@ function nombreCliente(){
     const nombre = document.querySelector('#nombre').value;
     cita.nombre=nombre;
 
-    console.log(cita);
 }
 
 function seleccionarFecha(){
+    // seleccionando el input de la fecha
     const inputFecha = document.querySelector('#fecha');
     inputFecha.addEventListener('input', function(e){
-
+        // obteniendo el dia
         const dia = new Date(e.target.value).getUTCDay();
-
-        if([6,0].includes(dia)){
+        // validando que no seleccionen fin de semana
+        if( [6 , 0].includes(dia)){
             e.target.value = '';
+            alertaFecha('Sábados y Domingos no disponibles', 'error');
         }else{
             cita.fecha = e.target.value;
         }
     });
+}
+
+function alertaFecha(mensaje, tipo){
+
+    // previene que se generen más de 1 alerta
+    const alertaPrevia = document.querySelector('.alert');
+    if(alertaPrevia) return;
+
+    // crea una alerta 
+    const alerta = document.createElement('P');
+    alerta.textContent = mensaje;
+    alerta.classList.add('alert');
+    alerta.classList.add(tipo);
+
+    // lugar en donde se va mostrar la alerta
+    const formulario = document.querySelector('#paso-2 p');
+    formulario.appendChild(alerta);
+
+    // duracion de la alerta
+    setTimeout(() =>{
+        alerta.remove();
+    }, 3000);
+
 }
 
