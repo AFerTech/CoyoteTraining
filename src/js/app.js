@@ -28,6 +28,8 @@ function iniciarApp(){
     nombreCliente(); //añade el nombre de cliente al obj de cita
     seleccionarFecha(); // añade la fecha al obj cita
     seleccionarHora(); // añade la hora al obj cita
+
+    mostrarResumen();
 }
 
 
@@ -76,6 +78,7 @@ function paginador(){
     }else if(paso ===3){
         anterior.classList.remove('ocultar');
         siguiente.classList.add('ocultar');
+        mostrarResumen();
     }else{
         anterior.classList.remove('ocultar');
         siguiente.classList.remove('ocultar');
@@ -102,7 +105,6 @@ function pagSiguiente(){
         paso++;
 
         paginador();
-        
     });
 
 }
@@ -185,7 +187,7 @@ function seleccionarFecha(){
         // validando que no seleccionen fin de semana
         if( [6 , 0].includes(dia)){
             e.target.value = '';
-            mostrarAlerta('Sábados y Domingos no disponibles', 'error');
+            mostrarAlerta('Sábados y Domingos no disponibles', 'error', '.formulario');
         }else{
             cita.fecha = e.target.value;
         }
@@ -201,19 +203,31 @@ function seleccionarHora(){
         const hora = horaCita.split(":")[0];
         if(hora < 10 || hora > 18){
             e.target.value='';
-            mostrarAlerta('Hora no valida', 'error');
+            mostrarAlerta('Hora no valida', 'error', '.formulario');
         }else{
             cita.hora = e.target.value;
-            console.log(cita);
         }
     });
 }
 
-function mostrarAlerta(mensaje, tipo){
+function mostrarResumen(){
+    const resumen = document.querySelector('.contenido-resumen');
+
+    if(Object.values(cita).includes('') || cita.servicios.length===0){
+        mostrarAlerta('Faltan datos por llenas', 'error', '.contenido-resumen', false);
+    }else{
+        console.log("datos llenados correctamente");
+    }
+}
+
+function mostrarAlerta(mensaje, tipo, elemento, desaparece =true){
 
     // previene que se generen más de 1 alerta
     const alertaPrevia = document.querySelector('.alert');
-    if(alertaPrevia) return;
+
+    if(alertaPrevia) {
+        alertaPrevia.remove();
+    }
 
     // crea una alerta 
     const alerta = document.createElement('P');
@@ -222,15 +236,20 @@ function mostrarAlerta(mensaje, tipo){
     alerta.classList.add(tipo);
 
     // lugar en donde se va mostrar la alerta
-    const formulario = document.querySelector('#paso-2 p');
-    formulario.appendChild(alerta);
+    const referencia = document.querySelector(elemento);
+    referencia.appendChild(alerta);
 
     // duracion de la alerta
-    setTimeout(() =>{
-        alerta.remove();
-    }, 3000);
+    if(desaparece){
+        setTimeout(() =>{
+            alerta.remove();
+        }, 3000);
+    }
+    
 
 }
+
+
 
 
 
