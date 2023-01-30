@@ -291,8 +291,20 @@ function mostrarResumen(){
     resumen.appendChild(btnCita);
 }
 
-function reservarCita(){
-    
+async function reservarCita(){
+    const datos = new FormData();
+    datos.append('nombre', 'alexis');
+
+    // peticion a la API
+    const url = 'http://localhost:3000/api/citas';
+    const respuesta = await fetch(url,{
+        method: 'POST'
+    });
+
+    const resultado = await respuesta.json();
+    console.log(resultado);
+    // console.log([...datos]);
+
 }
 
 
@@ -301,13 +313,9 @@ function mostrarAlerta(mensaje, tipo, elemento, desaparece =true){
 
     // previene que se generen más de 1 alerta
     const alertaPrevia = document.querySelector('.alert');
-
-    
-
     if(alertaPrevia) {
         alertaPrevia.remove();
     }
-
     // crea una alerta 
     const alerta = document.createElement('P');
     alerta.textContent = mensaje;
