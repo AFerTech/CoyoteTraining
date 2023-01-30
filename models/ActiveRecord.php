@@ -165,6 +165,8 @@ class ActiveRecord {
         $query .= " WHERE id = '" . self::$db->escape_string($this->id) . "' ";
         $query .= " LIMIT 1 "; 
 
+        return json_encode(['query' => $query]);
+
         // Actualizar BD
         $resultado = self::$db->query($query);
         return $resultado;
