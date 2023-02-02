@@ -140,6 +140,7 @@ class ActiveRecord {
         $query .= join("','", array_values($atributos));
         $query .= "') ";
 
+        // return json_encode(['query' => $query]);
         // Resultado de la consulta
         $resultado = self::$db->query($query);
         return [
@@ -164,8 +165,8 @@ class ActiveRecord {
         $query .=  join(', ', $valores );
         $query .= " WHERE id = '" . self::$db->escape_string($this->id) . "' ";
         $query .= " LIMIT 1 "; 
-
-        return json_encode(['query' => $query]);
+        // return $query;
+        // return json_encode(['query' => $query]);
 
         // Actualizar BD
         $resultado = self::$db->query($query);

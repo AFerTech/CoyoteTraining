@@ -2,6 +2,8 @@
 
 namespace Model;
 
+use Model\ActiveRecord;
+
 class Usuario extends ActiveRecord{
 
     // BD

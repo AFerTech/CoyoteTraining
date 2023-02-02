@@ -2,6 +2,8 @@
 
 namespace Model;
 
+use Model\ActiveRecord;
+
 class Servicio extends ActiveRecord{
     // BD
     protected static $tabla = 'servicios';

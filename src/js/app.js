@@ -300,14 +300,14 @@ async function reservarCita(){
 
     const {nombre, fecha, hora, servicios, id} = cita;
 
-    const idServicios = servicios.map(servicio => servicio.id);
-    // console.log(idServicios);
+    const servicio_id = servicios.map(servicio => servicio.id);
+    //  console.log(servicio_id);
     // return;
     const datos = new FormData();
     datos.append('fecha', fecha);
     datos.append('hora', hora);
     datos.append('usuarioId', id);
-    datos.append('servicios', idServicios);
+    datos.append('servicios', servicio_id);
 
     try {
          // peticion a la API
@@ -316,7 +316,7 @@ async function reservarCita(){
         method: 'POST',
         body: datos,
     });
-
+    
     const resultado = await respuesta.json();
     if(resultado.resultado){
         Swal.fire({
@@ -331,8 +331,7 @@ async function reservarCita(){
               }, 1500);
           })
     }
-    // console.log([...datos]);
-        
+    //  console.log([...datos]);
     } catch (error) {
         Swal.fire({
             icon: 'error',
@@ -342,8 +341,6 @@ async function reservarCita(){
     }
 
 }
-
-
 
 function mostrarAlerta(mensaje, tipo, elemento, desaparece =true){
 
