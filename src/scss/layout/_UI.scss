@@ -24,3 +24,16 @@
         
     }
 }
+.barra{
+ 
+    margin: v.$separacion 0;
+    @include m.tablet{
+        display: flex;
+        justify-content:  space-between;
+        align-items: center;
+    }
+    .btn{
+        @include m.boton(v.$blue-crayola, v.$purple-navy);
+        margin: 0;
+    }
+}

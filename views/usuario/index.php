@@ -1,6 +1,12 @@
 <h1 class="pag-name">Citas</h1>
 <p class="desc-pag">Elige tus servicios</p>
 
+<div class="barra">
+    <p>Hola: <?php echo $nombre ?? ''; ?></p>
+
+    <a href="/logout" class="btn">Cerrar Sesión</a>
+</div>
+
 <div id="app">
     <nav class="tabs">
         <button class="actual" type="button" data-paso="1">Servicios</button>

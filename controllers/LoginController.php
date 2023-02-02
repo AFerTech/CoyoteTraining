@@ -59,8 +59,16 @@ class LoginController
     }
 
     public static function logout(){
-        echo "Desde logout";
+        // debuguear($_SESSION);
+
+        // limpia la sesion
+        $_SESSION = [];
+        // redirecciona al finalizar la sesión
+        header('Location: /');
+
     }
+
+
     public static function recuperar(Router $router){
         $alertas = [];
 
