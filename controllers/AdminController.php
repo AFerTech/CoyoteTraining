@@ -11,6 +11,7 @@ class AdminController{
 
     public static function index(Router $router){
         isAuth();
+        $fecha= date('Y-m-d');
 
         // consultar la bd
         $consulta = "SELECT citas.id, citas.hora, CONCAT( usuarios.nombre, ' ', usuarios.apellido) as cliente, ";
@@ -22,14 +23,15 @@ class AdminController{
         $consulta .= " ON citasservicios.cita_id=citas.id ";
         $consulta .= " LEFT OUTER JOIN servicios ";
         $consulta .= " ON servicios.id=citasservicios.servicio_id ";
-        // $consulta .= " WHERE fecha =  '${fecha}' ";
+        $consulta .= " WHERE fecha =  '${fecha}' ";
 
         $citas = AdminCita::SQL($consulta);
 
         $router->render('admin/index',[
             'nombre' => $_SESSION['nombre'],
             'id' => $_SESSION['id'],
-            'citas' => $citas
+            'citas' => $citas,
+            'fecha' => $fecha
         ]);
     }
 }
