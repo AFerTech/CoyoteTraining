@@ -35,7 +35,7 @@
             <?php 
             $idCita = $cita->id;
             } ?>  <!--fin if-->
-              <p class="servicio">Servicio: <span><?php echo $cita->servicio . " ". $cita->precio; ?></span></p>
+              <p>Servicio: <span><?php echo $cita->servicio . " ". $cita->precio; ?></span></p>
             </li>
             <?php  }?>  <!--fin foreach-->
     </ul>
