@@ -13,6 +13,12 @@ function s($html) : string {
     return $s;
 }
 
+function esUltimo( string $actual, string $proximo) : bool {
+    if($actual !== $proximo){
+        return true;
+    }
+    return false;
+}
 // verifica autenticación de usuario
 function isAuth(): void{
     if(!isset($_SESSION['login'])){

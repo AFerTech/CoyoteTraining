@@ -18,9 +18,9 @@
     <ul class="citas">
         <?php
             $idCita =0;
-            foreach($citas as $cita){
+            foreach($citas as $key => $cita){
                 if($idCita !== $cita->id){
-                
+                $total =0;
         ?>
             <li>
                <h3>Cita</h3>
@@ -34,8 +34,21 @@
                <!-- <h3><span> Servicios </span> </h3> -->
             <?php 
             $idCita = $cita->id;
-            } ?>  <!--fin if-->
+            } 
+                $total += $cita->precio;
+            ?>  <!--fin if-->
               <p>Servicio: <span><?php echo $cita->servicio . " ". $cita->precio; ?></span></p>
+
+            <?php
+                $actual = $cita->id;
+                $proximo = $citas[$key +1]->id ?? 0;
+
+                if(esUltimo($actual, $proximo)){ ?>
+
+                <p class="total">Total: <span>$ <?php echo $total; ?></span></p>
+                <?php } ?>
+                
+            
             </li>
             <?php  }?>  <!--fin foreach-->
     </ul>
