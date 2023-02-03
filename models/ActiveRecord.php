@@ -115,6 +115,12 @@ class ActiveRecord {
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado ) ;
     }
+    // consulta plana de sql (cuando los métodos del modelo no son suficientes)
+    public static function SQL($consulta) {
+        $query = $consulta;
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
 
     // Obtener Registros con cierta cantidad
     public static function get($limite) {
