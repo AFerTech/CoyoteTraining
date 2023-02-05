@@ -41,4 +41,5 @@ class AdminController{
             'fecha' => $fecha
         ]);
     }
+
 }

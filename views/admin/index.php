@@ -54,6 +54,11 @@
                 <p class="total">Total: <span>$ <?php echo $total; ?></span></p>
                 <?php } ?>
                 
+                <form action="/api/eliminar" method="POST">
+                    <input type="hidden" name="id" value="<?php echo $cita->id;  ?>">
+                    <input type="submit" class="btn-eliminar" value="Eliminar">
+
+                </form>
             
             </li>
             <?php  }?>  <!--fin foreach-->
