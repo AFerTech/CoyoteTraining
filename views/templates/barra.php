@@ -6,3 +6,13 @@
 
     <a href="/logout" class="btn">Cerrar Sesión</a>
 </div>
+
+<?php if(isset($_SESSION['admin'])){ ?>
+
+    <div class="barra-servicios">
+        <a class="btn" href="/admin">Ver citas</a>
+        <a class="btn" href="/servicios">Servicios</a>
+        <a class="btn" href="/servicios/crear">Crear Servicios</a>
+    </div>
+
+    <?php } ?>
