@@ -19,4 +19,14 @@ class Servicio extends ActiveRecord{
         $this->nombre = $args['nombre'] ?? '';
         $this->precio = $args['precio'] ?? '';
     }
+
+    public function validar(){
+        if(!$this->nombre){
+            self::$alertas['error'][] = 'Falta el nombre del servicio';
+        }
+        if(!is_numeric($this->precio)){
+            self::$alertas['error'][] = 'Falta el precio del servicio';
+        }
+        return self::$alertas;
+    }
 }
