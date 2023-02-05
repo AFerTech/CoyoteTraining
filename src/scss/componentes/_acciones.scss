@@ -6,9 +6,10 @@
     @include m.tablet{
         display: flex;
         justify-content: space-around;
+        align-items: center;
     }
     a{
-        color: v.$space-cadet;
+        color: v.$blanco;
         display: block;
         margin-bottom: calc(v.$separacion/2);
         text-align: center;
