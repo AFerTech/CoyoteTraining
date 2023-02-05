@@ -9,10 +9,11 @@ class ServicioController
 {
 
     public static function index(Router $router){
-
+        $servicios = Servicio::all();
         $router->render('/admin/servicios/index',[
             'nombre' => $_SESSION['nombre'],
-            'id'  => $_SESSION['id']
+            'id'  => $_SESSION['id'],
+            'servicios' => $servicios
         ]);
     }
 
