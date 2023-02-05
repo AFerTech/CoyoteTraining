@@ -44,16 +44,31 @@ class ServicioController
     }
 
     public static function actualizar(Router $router){
+        // validar el id que se obtiene sea numerico
+        if(!is_numeric($_GET['id'])) return;
+
+        // pasando el id al obj servicio para buscarlo en la bd
+        $servicio =Servicio::find($_GET['id']);
+        $alertas = [];
 
         if($_SERVER['REQUEST_METHOD']=== 'POST'){
-            
+            $servicio->sincronizar($_POST);
+
+            $alertas = $servicio->validar();
+            if(empty($alertas)){
+                $servicio->guardar();
+                header('Location: /servicios');
+            }
         }
+
         $router->render('/admin/servicios/actualizar',[
             'nombre' => $_SESSION['nombre'],
-            'id'  => $_SESSION['id']
+            'id'  => $_SESSION['id'],
+            'servicio' => $servicio,
+            'alertas' => $alertas
         ]);
     }
-    public static function eliminar(Router $router){
+    public static function eliminar(){
 
         if($_SERVER['REQUEST_METHOD']=== 'POST'){
             
