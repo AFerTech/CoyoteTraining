@@ -1,1 +1,1 @@
-coyotetraining-production.up.railway.app
+web: vendor/bin/heroku-php-apache2 public/
