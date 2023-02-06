@@ -9,6 +9,7 @@ class ServicioController
 {
 
     public static function index(Router $router){
+        isAdmin();
         $servicios = Servicio::all();
         $router->render('/admin/servicios/index',[
             'nombre' => $_SESSION['nombre'],
@@ -19,6 +20,7 @@ class ServicioController
 
 
     public static function crear(Router $router){
+        isAdmin();
 
         // creando el obj vacio para poder pasarlo a las vitas
         $servicio = new Servicio;
@@ -44,6 +46,8 @@ class ServicioController
     }
 
     public static function actualizar(Router $router){
+        isAdmin();
+
         // validar el id que se obtiene sea numerico
         if(!is_numeric($_GET['id'])) return;
 
@@ -69,6 +73,7 @@ class ServicioController
         ]);
     }
     public static function eliminar(){
+        isAdmin();
 
         if($_SERVER['REQUEST_METHOD']=== 'POST'){
             $id = $_POST['id'];
